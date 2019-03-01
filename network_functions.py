@@ -2,7 +2,7 @@
 from typing import List, Tuple, Dict, TextIO
 
 
-def count_profiles(profiles_file: TextIO) -> int:
+def count_profiles(profiles_file = TextIO):
     """Count the "number of profiles" in the file
 
     Docstring examples not given since result depends on input data.
@@ -15,7 +15,7 @@ def count_profiles(profiles_file: TextIO) -> int:
     return count + 1
 
 
-def format_name(name: str) -> str:
+def format_name(name = str):
     """Format the name as "Firstname(s) + Lastnames"
 
     example: "Pritchett, Jay" converts to "Jay Pritchett"
@@ -23,7 +23,7 @@ def format_name(name: str) -> str:
     return name.split(',')[1][1:] + ' ' + name.split(',')[0]
 
 
-def format_list(list_: List[str]) -> List[str]:
+def format_list(list_= List[str]):
     """Remove duplicate items from the list and sorts the list in
     alphabetic order of names present in the list
 
@@ -40,8 +40,8 @@ def format_list(list_: List[str]) -> List[str]:
     return formatted_list
 
 
-def load_profiles(profiles_file: TextIO, person_to_friends: Dict[str, List[str]],
-                  person_to_networks: Dict[str, List[str]]) -> None:
+def load_profiles(profiles_file= TextIO, person_to_friends= Dict[str, List[str]],
+                  person_to_networks= Dict[str, List[str]]):
     """Update the "person to friends" dictionary person_to_friends and the
     "person to networks" dictionary person_to_networks to include data from
     profiles_file.
@@ -65,7 +65,7 @@ def load_profiles(profiles_file: TextIO, person_to_friends: Dict[str, List[str]]
             person_to_networks[person_name] = format_list(list_of_networks)
 
 
-def get_average_friend_count(person_to_friends: Dict[str, List[str]]) -> float:
+def get_average_friend_count(person_to_friends= Dict[str, List[str]]):
     """Count the average number of friends that people who appear as keys in the
     "person to friends" dictionary have.
 
@@ -83,7 +83,7 @@ def get_average_friend_count(person_to_friends: Dict[str, List[str]]) -> float:
         return sum(num_friend_list) / len(num_friend_list)
 
 
-def get_families(person_to_friends: Dict[str, List[str]]) -> Dict[str, List[str]]:
+def get_families(person_to_friends = Dict[str, List[str]]):
     """Return a "last name to first name(s)" dictionary based on the given
     "person to friends" dictionary.
 
@@ -108,7 +108,7 @@ def get_families(person_to_friends: Dict[str, List[str]]) -> Dict[str, List[str]
     return dict_fam_mem
 
 
-def invert_network(person_to_networks: Dict[str, List[str]]) -> Dict[str, List[str]]:
+def invert_network(person_to_networks=Dict[str, List[str]]):
     """Return a "network to people" dictionary based on the given
     "person to networks" dictionary.
 
@@ -131,8 +131,8 @@ def invert_network(person_to_networks: Dict[str, List[str]]) -> Dict[str, List[s
     return dict_of_network
 
 
-def get_friends_of_friends(person_to_friends: Dict[str, List[str]],
-                           person: str) -> List[str]:
+def get_friends_of_friends(person_to_friends= Dict[str, List[str]],
+                           person= str):
     """Return the list of names of people who are friends of friends of the
     "person" by making use of "person_to_friends" dictionary.
 
@@ -155,7 +155,7 @@ def get_friends_of_friends(person_to_friends: Dict[str, List[str]],
     return list_far_frnds
 
 
-def add_score(score_dict: Dict[str, int], scorer: str) -> Dict[str, int]:
+def add_score(score_dict= Dict[str, int], scorer= str):
     """Add 1 to the scorer's score returning the updated dictionary.
 
     Docstring examples not given since result depends on input data.
@@ -169,8 +169,7 @@ def add_score(score_dict: Dict[str, int], scorer: str) -> Dict[str, int]:
 
 
 def dict_to_tuple(score_dict: Dict[str, int],
-                  person_to_friends: Dict[str, List[str]], person: str)\
-        -> List[Tuple[str, int]]:
+                  person_to_friends= Dict[str, List[str]], person= str):
     """Convert "score_dict" to a list of tuples.
 
     example: {'Mitchell Pritchett': 4, 'Cameron Tucker': 2,
@@ -186,10 +185,9 @@ def dict_to_tuple(score_dict: Dict[str, int],
     return final_score_list
 
 
-def mutual_friend_recommendations(person: str,
-                                  person_to_friends: Dict[str, List[str]],
-                                  potential_friend_dict: Dict[str, int]) \
-        -> Dict[str, int]:
+def mutual_friend_recommendations(person= str,
+                                  person_to_friends= Dict[str, List[str]],
+                                  potential_friend_dict= Dict[str, int]) :
     """Add potential friends on the basis of mutual friends in the
     "potential_friend_dict".
     """
@@ -205,9 +203,9 @@ def mutual_friend_recommendations(person: str,
     return potential_friend_dict
 
 
-def network_recommendations(person: str,
-                            person_to_networks: Dict[str, List[str]],
-                            potential_friend_dict: Dict[str, int]) -> Dict[str, int]:
+def network_recommendations(person= str,
+                            person_to_networks= Dict[str, List[str]],
+                            potential_friend_dict= Dict[str, int]):
     """Add potential friends on the basis of network in the
     "potential_friend_dict".
     """
@@ -221,9 +219,9 @@ def network_recommendations(person: str,
     return potential_friend_dict
 
 
-def family_recommendations(person: str,
-                           person_to_friends: Dict[str, List[str]],
-                           potential_friend_dict: Dict[str, int]) -> Dict[str, int]:
+def family_recommendations(person= str,
+                           person_to_friends= Dict[str, List[str]],
+                           potential_friend_dict= Dict[str, int]):
     """Add potential friends on the basis of last name in the
     "potential_friend_dict".
     """
@@ -238,7 +236,7 @@ def family_recommendations(person: str,
     return potential_friend_dict
 
 
-def sort_dict(dict_: Dict[str, int]) -> Dict[str, int]:
+def sort_dict(dict_= Dict[str, int]):
     """Sort dictionary containing potential friends as keys and their score as
     values in decreasing order of their score and in alphabetic order of their
     names for those having same score.
@@ -264,10 +262,9 @@ def sort_dict(dict_: Dict[str, int]) -> Dict[str, int]:
     return score_sorted_dict
 
 
-def make_recommendations(person: str,
-                         person_to_friends: Dict[str, List[str]],
-                         person_to_networks: Dict[str, List[str]])\
-        -> List[Tuple[str, int]]:
+def make_recommendations(person= str,
+                         person_to_friends= Dict[str, List[str]],
+                         person_to_networks= Dict[str, List[str]]):
     """Return a list of tuples, each having name and score of the recommended
      friend.
 

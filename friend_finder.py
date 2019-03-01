@@ -3,7 +3,7 @@ from typing import List
 from network_functions import load_profiles, make_recommendations
 
 
-def display_recommendations(potential_friends: List[str]) -> None:
+def display_recommendations(potential_friends = List[str]):
     """Display the recommendations in potential_friends or a message
     indicating that there are no recommendations.
     """
